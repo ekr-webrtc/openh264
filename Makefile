@@ -1,4 +1,3 @@
-OS=$(shell uname | tr A-Z a-z | tr -d \\-[:digit:].)
 ARCH=$(shell uname -m)
 LIBPREFIX=lib
 LIBSUFFIX=a
@@ -105,7 +104,7 @@ PROCESSING_UNITTEST_INCLUDES = $(CODEC_UNITTEST_INCLUDES) $(PROCESSING_INCLUDES)
 API_TEST_INCLUDES = $(CODEC_UNITTEST_INCLUDES) -Itest -Itest/api
 
 MODULE_INCLUDES = -I$(FIREFOX_DIR)/content/media/gmp/gmp-api -I$(FIREFOX_OBJ)/dist/include/nspr $(ENCODER_INCLUDES) $(DECODER_INCLUDES)
-MODULE_CFLAGS = -arch x86_64 -std=c++11
+MODULE_CFLAGS = -std=c++11
 
 .PHONY: test gtest-bootstrap clean
 

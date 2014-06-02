@@ -35,10 +35,10 @@ SYSROOT = $(NDKROOT)/platforms/android-$(NDKLEVEL)/arch-$(ARCH)
 CXX = $(TOOLCHAINPREFIX)g++
 CC = $(TOOLCHAINPREFIX)gcc
 AR = $(TOOLCHAINPREFIX)ar
-CFLAGS += -DLINUX -DANDROID_NDK -fpic --sysroot=$(SYSROOT)
+CFLAGS += -DLINUX -DANDROID_NDK -fpic --sysroot=$(SYSROOT) -I$(NDKROOT)/sources/cxx-stl/system/include -I$(NDKROOT)/sources/cxx-stl/stlport/stlport
 CXXFLAGS += -fno-rtti -fno-exceptions
 LDFLAGS += --sysroot=$(SYSROOT)
-SHLDFLAGS = -Wl,--no-undefined -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now -Wl,-soname,lib$(PROJECT_NAME).so
+SHLDFLAGS = -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now -Wl,-soname,lib$(PROJECT_NAME).so -lstdc++
 
 STL_INCLUDES = \
     -I$(NDKROOT)/sources/cxx-stl/stlport/stlport
