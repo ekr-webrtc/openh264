@@ -395,7 +395,7 @@ typedef struct TagWelsSvcCodingParam: SEncParamExt {
     uint8_t uiProfileIdc		= PRO_BASELINE;
     int8_t iIdxSpatial	= 0;
     while (iIdxSpatial < iSpatialLayerNum) {
-      pDlp->uiProfileIdc		= (pCodingParam.sSpatialLayers[iIdxSpatial].uiProfileIdc == PRO_UNKNOWN) ? uiProfileIdc :
+      pDlp->uiProfileIdc		= (pCodingParam.sSpatialLayers[iIdxSpatial].uiProfileIdc == (unsigned int)PRO_UNKNOWN) ? uiProfileIdc :
                               pCodingParam.sSpatialLayers[iIdxSpatial].uiProfileIdc;
       pDlp->uiLevelIdc        = (pCodingParam.sSpatialLayers[iIdxSpatial].uiLevelIdc == LEVEL_UNKNOWN) ? LEVEL_5_0 :
                                 pCodingParam.sSpatialLayers[iIdxSpatial].uiLevelIdc;

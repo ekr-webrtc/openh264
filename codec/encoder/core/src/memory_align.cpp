@@ -135,11 +135,11 @@ void CMemoryAlign::WelsFree (void* pPointer, const char* kpTag) {
   }
 }
 
-const uint32_t CMemoryAlign::WelsGetCacheLineSize() const {
+uint32_t CMemoryAlign::WelsGetCacheLineSize() const {
   return m_nCacheLineSize;
 }
 
-const uint32_t CMemoryAlign::WelsGetMemoryUsage() const {
+uint32_t CMemoryAlign::WelsGetMemoryUsage() const {
   return m_nMemoryUsageInBytes;
 }
 

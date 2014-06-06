@@ -28,6 +28,8 @@
 #define PUBLIC_FUNC
 #endif
 
+#define nullptr NULL
+
 static int g_log_level = 0;
 
 #if 0
@@ -43,7 +45,6 @@ static int g_log_level = 0;
 #else
 #define GMPLOG(l, x)
 #endif
-
 
 #define GL_CRIT 0
 #define GL_ERROR 1
@@ -129,6 +130,7 @@ class OpenH264VideoEncoder : public GMPVideoEncoder
                                  GMPEncoderCallback* callback,
                                  int32_t numberOfCores,
                                  uint32_t maxPayloadSize)  {
+    abort();
     GMPErr err = g_platform_api->createthread(&worker_thread_);
     if (err != GMPNoErr) {
       GMPLOG(GL_ERROR, "Couldn't create new thread");
@@ -628,12 +630,14 @@ extern "C" {
 
 PUBLIC_FUNC GMPErr
 GMPInit(GMPPlatformAPI* aPlatformAPI) {
+  fprintf(stderr, "%s:%d\n", __FUNCTION__, __LINE__);
   g_platform_api = aPlatformAPI;
   return GMPNoErr;
 }
 
 PUBLIC_FUNC GMPErr
 GMPGetAPI(const char* aApiName, void* aHostAPI, void** aPluginApi) {
+  fprintf(stderr, "%s:%d\n", __FUNCTION__, __LINE__);
   if (!strcmp(aApiName, "decode-video")) {
     *aPluginApi = new OpenH264VideoDecoder(static_cast<GMPVideoHost*>(aHostAPI));
     return GMPNoErr;

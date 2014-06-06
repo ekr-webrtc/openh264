@@ -49,8 +49,8 @@ class CMemoryAlign {
   void* WelsMallocz (const uint32_t kuiSize, const char* kpTag);
   void* WelsMalloc (const uint32_t kuiSize, const char* kpTag);
   void WelsFree (void* pPointer, const char* kpTag);
-  const uint32_t WelsGetCacheLineSize() const;
-  const uint32_t WelsGetMemoryUsage() const;
+  uint32_t WelsGetCacheLineSize() const;
+  uint32_t WelsGetMemoryUsage() const;
 
  private:
 // private copy & assign constructors adding to fix klocwork scan issues
